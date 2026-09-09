@@ -40,57 +40,103 @@
 
   <!-- 페이지의 핵심 콘텐츠 -->
   <main>
-    <!-- 나를 처음 소개하는 영역 -->
+    <!-- Hero 영역 -->
     <section id="home">
       <p>안녕하세요.</p>
-      <h1>나를 소개하는 포트폴리오입니다.</h1>
-      <p>웹 개발을 공부하고 있습니다.</p>
+      <h1>웹 개발을 공부하는 홍길동입니다.</h1>
+      <p>사용자에게 편리한 웹페이지를 만드는 것을 좋아합니다.</p>
 
-      <a href="#projects">프로젝트 보기</a>
-      <a href="#contact">연락하기</a>
+      <div>
+        <a href="#projects">프로젝트 보기</a>
+        <a href="#contact">연락하기</a>
+      </div>
     </section>
 
     <!-- 자기소개 영역 -->
     <section id="about">
       <h2>About Me</h2>
-      <p>여기에 자기소개를 작성합니다.</p>
+
+      <div>
+        <div>
+          <h3>저는 이런 사람입니다.</h3>
+          <p>
+            새로운 것을 배우고 직접 만들어보는 과정을 좋아합니다.
+            현재 HTML, CSS, JavaScript를 공부하며 웹 개발의 기본기를 쌓고 있습니다.
+          </p>
+        </div>
+      </div>
     </section>
 
     <!-- 기술 스택 영역 -->
     <section id="skills">
       <h2>Skills</h2>
+
       <ul>
         <li>HTML</li>
         <li>CSS</li>
         <li>JavaScript</li>
+        <li>Git</li>
       </ul>
     </section>
 
-    <!-- GitHub 프로젝트 영역 -->
+    <!-- 프로젝트 영역 -->
     <section id="projects">
       <h2>Projects</h2>
-      <p>GitHub 프로젝트를 불러오는 영역입니다.</p>
+
+      <!-- JavaScript가 GitHub 데이터를 이 안에 삽입합니다 -->
+      <div id="project-list">
+        <p>프로젝트를 불러오는 중입니다.</p>
+      </div>
     </section>
 
-    <!-- 문의 폼 영역 -->
+    <!-- 문의 영역 -->
     <section id="contact">
       <h2>Contact</h2>
 
-      <form>
-        <label for="name">이름</label>
-        <input type="text" id="name" name="name">
+      <form id="contact-form" novalidate>
+        <div>
+          <label for="name">이름</label>
+          <input
+            type="text"
+            id="name"
+            name="name"
+            placeholder="이름을 입력하세요"
+            required
+          >
+          <p id="name-error"></p>
+        </div>
 
-        <label for="email">이메일</label>
-        <input type="email" id="email" name="email">
+        <div>
+          <label for="email">이메일</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            placeholder="이메일을 입력하세요"
+            required
+          >
+          <p id="email-error"></p>
+        </div>
 
-        <label for="message">메시지</label>
-        <textarea id="message" name="message"></textarea>
+        <div>
+          <label for="message">메시지</label>
+          <textarea
+            id="message"
+            name="message"
+            placeholder="메시지를 입력하세요"
+            required
+          ></textarea>
+          <p id="message-error"></p>
+        </div>
 
         <button type="submit">보내기</button>
+
+        <!-- JavaScript가 제출 결과를 보여줄 영역 -->
+        <p id="form-result"></p>
       </form>
     </section>
   </main>
-
+  
   <!-- 웹페이지의 하단 영역 -->
   <footer>
     <p>© 2026 나의 포트폴리오</p>

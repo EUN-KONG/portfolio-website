@@ -219,3 +219,18 @@ footer {
     padding-bottom: 120px;
   }
 }
+
+form div {
+  display: flex;
+  flex-direction: column;
+}
+
+form p {
+  min-height: 24px;
+  color: #dc2626;
+  font-size: 0.9rem;
+}
+
+#form-result {
+  color: var(--color-primary);
+}
