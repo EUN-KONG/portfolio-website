@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+
+  <!-- 모바일 화면에서 실제 화면 너비를 사용하도록 설정 -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <meta
+    name="description"
+    content="나를 소개하는 개인 포트폴리오 웹페이지"
+  >
+
+  <title>나의 포트폴리오</title>
+
+  <!-- 외부 CSS 파일 연결 -->
+  <link rel="stylesheet" href="css/style.css">
+
+  <!-- defer: HTML을 먼저 읽은 뒤 JavaScript를 실행 -->
+  <script src="js/main.js" defer></script>
+</head>
+<body>
+  <!-- 웹페이지의 상단 영역 -->
+  <header>
+    <nav>
+      <a href="#home">나의 포트폴리오</a>
+
+      <button type="button" aria-label="메뉴 열기">
+        ☰
+      </button>
+
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- 페이지의 핵심 콘텐츠 -->
+  <main>
+    <!-- 나를 처음 소개하는 영역 -->
+    <section id="home">
+      <p>안녕하세요.</p>
+      <h1>나를 소개하는 포트폴리오입니다.</h1>
+      <p>웹 개발을 공부하고 있습니다.</p>
+
+      <a href="#projects">프로젝트 보기</a>
+      <a href="#contact">연락하기</a>
+    </section>
+
+    <!-- 자기소개 영역 -->
+    <section id="about">
+      <h2>About Me</h2>
+      <p>여기에 자기소개를 작성합니다.</p>
+    </section>
+
+    <!-- 기술 스택 영역 -->
+    <section id="skills">
+      <h2>Skills</h2>
+      <ul>
+        <li>HTML</li>
+        <li>CSS</li>
+        <li>JavaScript</li>
+      </ul>
+    </section>
+
+    <!-- GitHub 프로젝트 영역 -->
+    <section id="projects">
+      <h2>Projects</h2>
+      <p>GitHub 프로젝트를 불러오는 영역입니다.</p>
+    </section>
+
+    <!-- 문의 폼 영역 -->
+    <section id="contact">
+      <h2>Contact</h2>
+
+      <form>
+        <label for="name">이름</label>
+        <input type="text" id="name" name="name">
+
+        <label for="email">이메일</label>
+        <input type="email" id="email" name="email">
+
+        <label for="message">메시지</label>
+        <textarea id="message" name="message"></textarea>
+
+        <button type="submit">보내기</button>
+      </form>
+    </section>
+  </main>
+
+  <!-- 웹페이지의 하단 영역 -->
+  <footer>
+    <p>© 2026 나의 포트폴리오</p>
+  </footer>
+</body>
+</html>
