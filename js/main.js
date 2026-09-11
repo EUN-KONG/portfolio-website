@@ -89,3 +89,95 @@ const sectionObserver = new IntersectionObserver(
 sections.forEach((section) => {
   sectionObserver.observe(section);
 });
+
+// 문의 폼 요소를 선택합니다.
+const contactForm = document.querySelector("#contact-form");
+const nameInput = document.querySelector("#name");
+const emailInput = document.querySelector("#email");
+const messageInput = document.querySelector("#message");
+
+const nameError = document.querySelector("#name-error");
+const emailError = document.querySelector("#email-error");
+const messageError = document.querySelector("#message-error");
+const formResult = document.querySelector("#form-result");
+
+// 이메일 형식 확인을 위한 정규식입니다.
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+// 입력값 하나를 검사하는 함수입니다.
+const validateField = (input, errorElement, message) => {
+  if (input.value.trim() === "") {
+    input.classList.add("error");
+    errorElement.textContent = message;
+    return false;
+  }
+
+  input.classList.remove("error");
+  errorElement.textContent = "";
+  return true;
+};
+
+// 입력 중에는 해당 입력칸의 에러를 제거합니다.
+nameInput.addEventListener("input", () => {
+  validateField(nameInput, nameError, "이름을 입력해주세요.");
+});
+
+emailInput.addEventListener("input", () => {
+  if (emailInput.value.trim() === "") {
+    emailInput.classList.add("error");
+    emailError.textContent = "이메일을 입력해주세요.";
+  } else if (!emailPattern.test(emailInput.value)) {
+    emailInput.classList.add("error");
+    emailError.textContent = "올바른 이메일 형식을 입력해주세요.";
+  } else {
+    emailInput.classList.remove("error");
+    emailError.textContent = "";
+  }
+});
+
+messageInput.addEventListener("input", () => {
+  validateField(messageInput, messageError, "메시지를 입력해주세요.");
+});
+
+// 폼 제출을 검사합니다.
+contactForm.addEventListener("submit", (event) => {
+  // 서버로 실제 전송되는 기본 동작을 막습니다.
+  event.preventDefault();
+
+  const isNameValid = validateField(
+    nameInput,
+    nameError,
+    "이름을 입력해주세요.",
+  );
+
+  const isMessageValid = validateField(
+    messageInput,
+    messageError,
+    "메시지를 입력해주세요.",
+  );
+
+  let isEmailValid = true;
+
+  if (emailInput.value.trim() === "") {
+    emailInput.classList.add("error");
+    emailError.textContent = "이메일을 입력해주세요.";
+    isEmailValid = false;
+  } else if (!emailPattern.test(emailInput.value)) {
+    emailInput.classList.add("error");
+    emailError.textContent = "올바른 이메일 형식을 입력해주세요.";
+    isEmailValid = false;
+  } else {
+    emailInput.classList.remove("error");
+    emailError.textContent = "";
+  }
+
+  if (isNameValid && isEmailValid && isMessageValid) {
+    formResult.textContent = "문의가 성공적으로 접수되었습니다.";
+    formResult.classList.add("success");
+
+    contactForm.reset();
+  } else {
+    formResult.textContent = "";
+    formResult.classList.remove("success");
+  }
+});

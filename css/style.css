@@ -320,3 +320,14 @@ header.scrolled {
   z-index: 10;
   box-shadow: var(--shadow);
 }
+
+/* 유효하지 않은 입력칸 */
+input.error,
+textarea.error {
+  border: 2px solid #dc2626;
+}
+
+/* 성공 메시지 */
+#form-result.success {
+  color: #16a34a;
+}
