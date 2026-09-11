@@ -41,3 +41,50 @@ portfolio-website
 ├── images
 └── README.md
 ```
+
+## API 상태 처리
+
+GitHub API 요청에 따라 다음 상태를 화면에 표시합니다.
+
+- 로딩 상태: 프로젝트를 불러오는 중입니다.
+- 성공 상태: GitHub 프로젝트 카드 표시
+- 에러 상태: 프로젝트를 불러올 수 없습니다.
+- 빈 상태: 표시할 프로젝트가 없습니다.
+
+## 주요 기준값
+
+- 스크롤 탑 버튼 표시 기준: 300px
+- 네비게이션 스타일 변경 기준: 60px
+- 스크롤 애니메이션 threshold: 0.2
+- 태블릿 반응형 기준: 768px
+- 데스크톱 반응형 기준: 1024px
+
+## 실행 방법
+
+1. 저장소를 내려받습니다.
+2. VS Code에서 프로젝트 폴더를 엽니다.
+3. `index.html`을 Live Server로 실행합니다.
+
+## 배포 URL
+
+https://EUN-KONG.github.io/portfolio-website/
+
+## GitHub 저장소
+
+https://github.com/EUN-KONG/portfolio-website
+
+## 스크린샷
+
+스크린샷을 촬영한 뒤 `images` 폴더에 파일을 넣고 아래 내용을 사용할 수 있습니다.
+
+### 데스크톱 화면
+
+![데스크톱 화면](images/desktop.png)
+
+### 모바일 화면
+
+![모바일 화면](images/mobile.png)
+
+### 다크 모드
+
+![다크 모드](images/dark-mode.png)
