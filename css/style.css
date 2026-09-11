@@ -381,3 +381,14 @@ textarea.error {
   color: #ffffff;
   cursor: pointer;
 }
+
+footer ul {
+  display: flex;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+footer a:hover {
+  color: var(--color-primary);
+}
