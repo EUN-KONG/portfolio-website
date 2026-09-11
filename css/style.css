@@ -392,3 +392,28 @@ footer ul {
 footer a:hover {
   color: var(--color-primary);
 }
+
+.about-content {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.about-content img {
+  width: 180px;
+  height: 180px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+@media (max-width: 767px) {
+  .about-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .about-content img {
+    width: 140px;
+    height: 140px;
+  }
+}
