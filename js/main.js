@@ -181,3 +181,88 @@ contactForm.addEventListener("submit", (event) => {
     formResult.classList.remove("success");
   }
 });
+
+// GitHub API를 사용할 사용자 아이디입니다.
+const githubUsername = "EUN-KONG";
+
+// 프로젝트를 표시할 HTML 요소입니다.
+const projectList = document.querySelector("#project-list");
+
+// GitHub 프로젝트를 화면에 표시하는 함수입니다.
+const renderProjects = (projects) => {
+  // 저장소가 하나도 없을 때의 빈 상태입니다.
+  if (projects.length === 0) {
+    projectList.innerHTML = `
+      <p class="project-status">표시할 프로젝트가 없습니다.</p>
+    `;
+    return;
+  }
+
+  // map으로 저장소 데이터를 HTML 카드로 변환합니다.
+  projectList.innerHTML = projects
+    .map((project) => {
+      const {
+        name,
+        description,
+        html_url: projectUrl,
+        stargazers_count: starCount,
+        language,
+      } = project;
+
+      return `
+        <article class="project-card">
+          <h3>${name}</h3>
+          <p>${description || "프로젝트 설명이 없습니다."}</p>
+          <p>사용 언어: ${language || "정보 없음"}</p>
+          <p>⭐ ${starCount}</p>
+          <a href="${projectUrl}" target="_blank" rel="noopener noreferrer">
+            GitHub에서 보기
+          </a>
+        </article>
+      `;
+    })
+    .join("");
+};
+
+// GitHub API에서 프로젝트를 가져오는 비동기 함수입니다.
+const fetchProjects = async () => {
+  // API 요청 중임을 표시합니다.
+  projectList.innerHTML = `
+    <p class="project-status">프로젝트를 불러오는 중입니다...</p>
+  `;
+
+  try {
+    const response = await fetch(
+      `https://api.github.com/users/${githubUsername}/repos?sort=updated`,
+    );
+
+    // 응답 상태가 정상적이지 않으면 에러를 발생시킵니다.
+    if (!response.ok) {
+      throw new Error("GitHub API 요청 실패");
+    }
+
+    const projects = await response.json();
+
+    // 가져온 프로젝트를 화면에 표시합니다.
+    renderProjects(projects);
+  } catch (error) {
+    // API 요청 실패 상태를 화면에 표시합니다.
+    projectList.innerHTML = `
+      <p class="project-status">
+        프로젝트를 불러올 수 없습니다.
+      </p>
+      <button type="button" class="retry-button">
+        다시 시도
+      </button>
+    `;
+
+    // 다시 시도 버튼을 선택합니다.
+    const retryButton = document.querySelector(".retry-button");
+
+    // 버튼을 클릭하면 API를 다시 요청합니다.
+    retryButton.addEventListener("click", fetchProjects);
+  }
+};
+
+// 페이지가 열릴 때 GitHub 프로젝트를 요청합니다.
+fetchProjects();
